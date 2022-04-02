@@ -116,6 +116,12 @@ public:
             { "write",      HandleNpcBotDumpWriteCommand,           rbac::RBAC_PERM_COMMAND_NPCBOT_DUMP_WRITE,         Console::Yes },
         };
 
+        static ChatCommandTable  npcbotEquipCommandTable =
+        {
+            { "clear", HandleNpcBotEquipClearCommand, rbac::RBAC_PERM_COMMAND_NPCBOT_RECALL, Console::No },
+            { "init", HandleNpcBotEquipInitCommand, rbac::RBAC_PERM_COMMAND_NPCBOT_RECALL, Console::No },
+        };
+
         static ChatCommandTable npcbotCommandTable =
         {
             //{ "debug",      npcbotDebugCommandTable                                                                                 },
@@ -142,6 +148,7 @@ public:
             { "order",      npcbotOrderCommandTable                                                                                 },
             { "vehicle",    npcbotVehicleCommandTable                                                                               },
             { "dump",       npcbotDumpCommandTable                                                                                  },
+            { "equip",      npcbotEquipCommandTable                                                                                 },
         };
 
         static ChatCommandTable commandTable =
@@ -1633,6 +1640,40 @@ public:
         BotMgr::ReloadConfig();
         handler->SendGlobalGMSysMessage("NpcBot config settings reloaded.");
         return true;
+    }
+
+    static bool HandleNpcBotEquipClearCommand(ChatHandler* handler)
+    {
+        Player* player = handler->GetPlayer();
+        Unit* target = player->GetSelectedUnit();
+        if (target) {
+            Creature* bot = target->ToCreature();
+            if (!bot || !bot->IsNPCBot()) {
+                handler->SendGlobalGMSysMessage("target is not a npcbot.");
+                return false;
+            }
+            if (target->GetOwnerGUID() != player->GetGUID()) {
+                handler->SendGlobalGMSysMessage("target npcbot does not belong to you.");
+                return false;
+            }
+            bot->GetBotAI()->UnEquipAll(bot->GetOwnerGUID());
+            handler->SendGlobalGMSysMessage("unequiped all equips of target npcbot.");
+        }
+        else
+        {
+            BotMap* botmap = player->GetBotMgr()->GetBotMap();
+            for (auto itr = botmap->begin(); itr != botmap->end(); ++itr)
+            {
+                itr->second->GetBotAI()->UnEquipAll(itr->second->GetOwnerGUID());
+            }
+        }
+        return true;
+    }
+
+    static bool HandleNpcBotEquipInitCommand(ChatHandler* handler)
+    {
+        handler->SendGlobalGMSysMessage("not implement yet.");
+        return false;
     }
 };
 

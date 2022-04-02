@@ -269,6 +269,9 @@ class bot_ai : public CreatureAI
 
         bool IsImmunedToMySpellEffect(Unit const* unit, SpellInfo const* spellInfo, SpellEffIndex index) const;
 
+        bool UnEquip(uint8 slot, ObjectGuid::LowType receiver) {return _unequip(slot, receiver);};
+        bool Equip(uint8 slot, Item* newItem, ObjectGuid::LowType receiver) {return _equip(slot, newItem, receiver);};
+
     protected:
         explicit bot_ai(Creature* creature);
 
