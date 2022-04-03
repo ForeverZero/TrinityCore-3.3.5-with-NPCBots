@@ -10,8 +10,10 @@
 class BotEquipMgr
 {
     public:
-        static bool InitBotEquip(Creature* bot);
-        static bool ClearBotEquip(Creature* bot);
+        static void InitBotEquip(Creature* bot);
+    private:
+        static void _initWarriorTankEquip(Creature* bot);
+        static void _doEquip(Creature* bot, std::vector<uint32> equipTemplate);
 };
 
 

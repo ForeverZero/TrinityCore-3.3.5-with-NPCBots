@@ -23,6 +23,7 @@
 #include "World.h"
 #include "WorldDatabase.h"
 #include "WorldSession.h"
+#include "botequipmgr.h"
 
 /*
 Name: script_bot_commands
@@ -1672,8 +1673,30 @@ public:
 
     static bool HandleNpcBotEquipInitCommand(ChatHandler* handler)
     {
-        handler->SendGlobalGMSysMessage("not implement yet.");
-        return false;
+        Player* player = handler->GetPlayer();
+        Unit* target = player->GetSelectedUnit();
+        if (target) {
+            Creature* bot = target->ToCreature();
+            if (!bot || !bot->IsNPCBot()) {
+                handler->SendGlobalGMSysMessage("target is not a npcbot.");
+                return true;
+            }
+            if (target->GetOwnerGUID() != player->GetGUID()) {
+                handler->SendGlobalGMSysMessage("target npcbot does not belong to you.");
+                return true;
+            }
+            handler->SendGlobalGMSysMessage("equiped all equips of target npcbot.");
+            BotEquipMgr::InitBotEquip(bot);
+        }
+        else
+        {
+            BotMap* botmap = player->GetBotMgr()->GetBotMap();
+            for (auto itr = botmap->begin(); itr != botmap->end(); ++itr)
+            {
+                BotEquipMgr::InitBotEquip(itr->second);
+            }
+        }
+        return true;
     }
 };
 
