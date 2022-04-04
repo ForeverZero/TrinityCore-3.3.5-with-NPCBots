@@ -8,198 +8,178 @@
 #include "bot_ai.h"
 #include "Item.h"
 #include "Log.h"
+#include "Player.h"
 
-const std::vector<uint32> DefaultEquip = {
-        0,        // MAINHAND
-        0,       // OFFHAND
-        0,           // RANGED
-        0,           // HEAD
-        0,        // SHOULDERS
-        0,        // CHEST
-        0,       // WAIST
-        0,        // LEGS
-        0,        // FEET
-        0,        // WRIST
-        0,        // HANDS
-        0,          // BACK
-        0,          // BODY
-        0,          // FINGER1
-        0,          // FINGER2
-        0,          // TRINKET1
-        0,          // TRINKET2
-        0,          // NECK
+const std::map<uint8, uint8> BotPlayerSlotMap = {
+        {BOT_SLOT_MAINHAND   ,  EQUIPMENT_SLOT_MAINHAND},
+        {BOT_SLOT_OFFHAND    ,  EQUIPMENT_SLOT_OFFHAND},
+        {BOT_SLOT_RANGED     ,  EQUIPMENT_SLOT_RANGED},
+        {BOT_SLOT_HEAD       ,  EQUIPMENT_SLOT_HEAD},
+        {BOT_SLOT_SHOULDERS  ,  EQUIPMENT_SLOT_SHOULDERS},
+        {BOT_SLOT_CHEST      ,  EQUIPMENT_SLOT_CHEST},
+        {BOT_SLOT_WAIST      ,  EQUIPMENT_SLOT_WAIST},
+        {BOT_SLOT_LEGS       ,  EQUIPMENT_SLOT_LEGS},
+        {BOT_SLOT_FEET       ,  EQUIPMENT_SLOT_FEET},
+        {BOT_SLOT_WRIST      ,  EQUIPMENT_SLOT_WRISTS},
+        {BOT_SLOT_HANDS      ,  EQUIPMENT_SLOT_HANDS},
+        {BOT_SLOT_BACK       ,  EQUIPMENT_SLOT_BACK},
+        {BOT_SLOT_BODY       ,  EQUIPMENT_SLOT_BODY},
+        {BOT_SLOT_FINGER1    ,  EQUIPMENT_SLOT_FINGER1},
+        {BOT_SLOT_FINGER2    ,  EQUIPMENT_SLOT_FINGER2},
+        {BOT_SLOT_TRINKET1   ,  EQUIPMENT_SLOT_TRINKET1},
+        {BOT_SLOT_TRINKET2   ,  EQUIPMENT_SLOT_TRINKET2},
+        {BOT_SLOT_NECK       ,  EQUIPMENT_SLOT_NECK},
 };
 
-const std::vector<uint32> WarriorTankLevel15Equip = {
-        6504,        // MAINHAND
-        13245,       // OFFHAND
-        0,           // RANGED
-        0,           // HEAD
-        1744,        // SHOULDERS
-        6731,        // CHEST
-        12978,       // WAIST
-        2166,        // LEGS
-        3302,        // FEET
-        15400,        // WRIST
-        2980,        // HANDS
-        0,          // BACK
-        0,          // BODY
-        0,          // FINGER1
-        0,          // FINGER2
-        0,          // TRINKET1
-        0,          // TRINKET2
-        0,          // NECK
+
+typedef std::map<uint32, uint32> SlotLevelEquip;
+const SlotLevelEquip WarriorTankMainHand = {
+        {15, 6504},
+        {30, 8225},
+        {40, 7943},
+        {50, 2244},
+        {60, 23054},
+        {70, 30311},
+        {187, 37065},
+        {200, 37401},
+        {213, 40345},
+        {219, 45700},
+        {232, 45110},
+        {245, 45110},
+        {251, 51010},
+        {258, 47506},
+        {264, 51869},
+        {277, 50672},
+};
+const SlotLevelEquip WarriorTankOffHand = {
+        {15 ,    13245        },
+        {30 ,    4065         },
+        {40 ,    9918         },
+        {50 ,    10835        },
+        {60 ,    23043        },
+        {70 ,    30314        },
+        {187,    37107        },
+        {200,    39276        },
+        {213,    40266        },
+        {219,    45707        },
+        {226,    40400        },
+        {232,    45877        },
+        {245,    47260        },
+        {251,    50794        },
+        {258,    46964        },
+        {264,    50065        },
+        {277,    50729        },
 };
 
-const std::vector<uint32> WarriorTankLevel30Equip = {
-        8225,       // MAINHAND
-        4065,       // OFFHAND
-        15286,       // RANGED
-        7915,       // HEAD
-        3841,       // SHOULDERS
-        7688,        // CHEST
-        10329,       // WAIST
-        14766,        // LEGS
-        10332,        // FEET
-        10333,        // WRIST
-        23170,       // HANDS
-        13121,       // BACK
-        0,       // BODY
-        0,       // FINGER1
-        0,       // FINGER2
-        0,       // TRINKET1
-        0,       // TRINKET2
-        13084,       // NECK
+const SlotLevelEquip WarriorRange = {
+        {15 ,      4576       },
+        {30 ,      11305      },
+        {40 ,      10624      },
+        {50 ,      13022      },
+        {60 ,      21478      },
+        {70 ,      34334      },
+        {187,      37050      },
+        {200,      37615      },
+        {213,      40265      },
+        {219,      46342      },
+        {232,      45327      },
+        {245,      48711      },
+        {251,      50776      },
+        {264,      51394      },
+        {277,      51927      },
 };
 
-const std::vector<uint32> WarriorTankLevel40Equip = {
-        7943,       // MAINHAND
-        9918,       // OFFHAND
-        15287,       // RANGED
-        10763,       // HEAD
-        7918,       // SHOULDERS
-        14821,        // CHEST
-        8159,       // WAIST
-        7926,        // LEGS
-        8160,        // FEET
-        14834,        // WRIST
-        13071,       // HANDS
-        11311,       // BACK
-        0,       // BODY
-        0,       // FINGER1
-        0,       // FINGER2
-        0,       // TRINKET1
-        0,       // TRINKET2
-        13088,       // NECK
+typedef std::map<uint8, SlotLevelEquip> BotSpecEquipTemplate;
+const BotSpecEquipTemplate WarriorTankEquipTemplate = {
+        {BOT_SLOT_MAINHAND,         WarriorTankMainHand     },
+        {BOT_SLOT_RANGED,           WarriorRange            },
+        {BOT_SLOT_OFFHAND,          WarriorTankOffHand      },
 };
 
-const std::vector<uint32> WarriorTankLevel50Equip = {
-        2244,       // MAINHAND
-        10835,      // OFFHAND
-        13022,      // RANGED
-        22223,      // HEAD
-        14552,      // SHOULDERS
-        11678,      // CHEST
-        11703,      // WAIST
-        11927,      // LEGS
-        22270,      // FEET
-        19580,      // WRIST
-        14855,      // HANDS
-        11677,      // BACK
-        0,          // BODY
-        0,          // FINGER1
-        0,          // FINGER2
-        0,          // TRINKET1
-        0,          // TRINKET2
-        11755,      // NECK
-};
-
-const std::vector<uint32> WarriorTankLevel60Equip = {
-        23054,          // MAINHAND
-        23043,          // OFFHAND
-        22811,          // RANGED
-        21329,          // HEAD
-        21330,           // SHOULDERS
-        21331,           // CHEST
-        21598,          // WAIST
-        21332,           // LEGS
-        21333,          // FEET
-        22671,          // WRIST
-        22670,          // HANDS
-        22938,          // BACK
-        0,          // BODY
-        23059,          // FINGER1
-        23028,          // FINGER2
-        23040,          // TRINKET1
-        19406,          // TRINKET2
-        22732,          // NECK
-};
-
-const std::vector<uint32> WarriorTankLevel70Equip = {
-        30311,          // MAINHAND
-        30314,          // OFFHAND
-        34334,          // RANGED
-        30974,          // HEAD
-        30980,          // SHOULDERS
-        30976,          // CHEST
-        34547,          // WAIST
-        30978,          // LEGS
-        34568,          // FEET
-        34442,          // WRIST
-        30970,          // HANDS
-        34190,          // BACK
-        0,          // BODY
-        34213,          // FINGER1
-        32261,          // FINGER2
-        33830,          // TRINKET1
-        30629,          // TRINKET2
-        34178,          // NECK
+const std::map<uint8, BotSpecEquipTemplate> AllBotSpecEquipTemplate = {
+        {BOT_SPEC_WARRIOR_PROTECTION, WarriorTankEquipTemplate}
 };
 
 void BotEquipMgr::InitBotEquip(Creature* bot) {
-    switch (bot->GetBotAI()->GetSpec()) {
-        case BOT_SPEC_WARRIOR_PROTECTION:
-            _initWarriorTankEquip(bot);
-            break;
-        default:
-            bot->Say("equip init does not support for my current spec.", LANG_COMMON);
+    // 找到天赋模板
+    auto templateItr = AllBotSpecEquipTemplate.find(bot->GetBotAI()->GetSpec());
+    if (templateItr == AllBotSpecEquipTemplate.end()) {
+        bot->Say("not equip template found for my current spec.", LANG_COMMON);
+        return;
     }
-}
 
-void BotEquipMgr::_initWarriorTankEquip(Creature* bot) {
-    uint8 botLevel = bot->GetLevel();
-    std::vector<uint32> equipTemplate;
+    // 根据每个slot决定给BOT穿什么装备
+    for (uint8 slot = BOT_SLOT_MAINHAND; slot < BOT_INVENTORY_SIZE; ++slot) {
 
-//    if (botLevel >= 15 && botLevel < 30) {
-//        equipTemplate = WarriorTankLevel15Equip;
-//    }else {
-//        bot->Say("not equip template found for my current level and spec.", LANG_COMMON);
-//    }
+        uint8 spec = bot->GetBotAI()->GetSpec();
 
-    //debug
-    equipTemplate = WarriorTankLevel70Equip;
-
-    _doEquip(bot, equipTemplate);
-}
-
-void BotEquipMgr::_doEquip(Creature* bot, std::vector<uint32> equipTemplate) {
-    bot_ai* ai = bot->GetBotAI();
-    for(uint8 slot = BOT_SLOT_MAINHAND; slot < BOT_INVENTORY_SIZE; slot++) {
-        uint32 itemId = equipTemplate[slot];
-        if (itemId <= 0)
+        // 找到SLOT模板
+        BotSpecEquipTemplate bset = templateItr->second;
+        auto slotItr = bset.find(slot);
+        if (slotItr == bset.end()) {
+            TC_LOG_WARN("server.loading", "equip template not found for spec %u, slot %u", spec, slot);
             continue;
-        Item* slotItem = bot->GetBotEquips(slot);
-        if (slotItem && slotItem->GetEntry() == itemId)
-            continue;
+        }
+        std::map<uint32, uint32> slotLevelEquip = slotItr->second;
 
-        Item* item = Item::CreateItem(equipTemplate[slot], 1);
+        // bot slot 转为player slot
+        uint32 slotLevel = _getSlotLevel(bot, slot);
+        if (slotLevel == 0) {
+            TC_LOG_ERROR("server.loading", "bot slot %u, get player slot level %u", slot, slotLevel);
+            continue;
+        }
+
+        // 找出最接近slotLevel的itemId
+        uint32 itemId = 0;
+        for (auto itr = slotLevelEquip.begin(); itr != slotLevelEquip.end(); ++itr) {
+            if (itr->first > slotLevel)
+                break;
+            itemId = itr->second;
+        }
+        if (itemId == 0) {
+            TC_LOG_WARN("server.loading", "spec %u, slot %u, level %u, item id not found", spec, slot, slotLevel);
+            continue;
+        }
+
+        // 给BOT穿上
+        Item* item = Item::CreateItem(itemId, 1);
         if (!item) {
-            TC_LOG_ERROR("misc", "failed to create item %u", itemId);
+            TC_LOG_ERROR("server.loading", "failed to create item %u", itemId);
             continue;
         }
-        if (!ai->Equip(slot, item, bot->GetOwnerGUID())) {
-            TC_LOG_ERROR("misc", "failed to equip item %u", itemId);
+        if (!bot->GetBotAI()->Equip(slot, item, bot->GetOwnerGUID())) {
+            TC_LOG_ERROR("server.loading", "failed to equip item %u", itemId);
             continue;
         }
     }
+}
+
+uint32 BotEquipMgr::_getSlotLevel(Creature* bot, uint8 slot) {
+    Player* owner = bot->GetBotOwner();
+    if (!owner)
+        return 0;
+    if (owner->GetLevel() < 80)
+        return owner->GetLevel();
+    uint8 pSlot = _mapBotSlotToPlayerSlot(slot);
+    if (pSlot < EQUIPMENT_SLOT_START || pSlot > EQUIPMENT_SLOT_END) {
+        TC_LOG_ERROR("server.loading", "pSlot %u convert to pSlot %u", slot, pSlot);
+        return 0;
+    }
+    // 如果玩家副手没有装备，返回主手
+    Item* slotEquip = owner->GetItemByPos(INVENTORY_SLOT_BAG_0, pSlot);
+    if (!slotEquip) {
+        if (slot == BOT_SLOT_OFFHAND)
+            return _getSlotLevel(bot, BOT_SLOT_MAINHAND);
+        else
+            return 187;
+    }
+    uint32 itemLevel = slotEquip->GetTemplate()->ItemLevel;
+    return itemLevel < 187 ? 187 : itemLevel;
+}
+
+uint8 BotEquipMgr::_mapBotSlotToPlayerSlot(uint8 pSlot) {
+    auto itr = BotPlayerSlotMap.find(pSlot);
+    if (itr == BotPlayerSlotMap.end())
+        return EQUIPMENT_SLOT_END + 1;
+    return itr->second;
 }
