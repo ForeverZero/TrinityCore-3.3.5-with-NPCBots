@@ -40,6 +40,10 @@ const BotSpecEquipTemplate WarriorTankEquipTemplate = {
         {BOT_SLOT_HEAD,             WarriorTankHead         },
         {BOT_SLOT_SHOULDERS,        WarriorTankShoulder     },
         {BOT_SLOT_CHEST,            WarriorTankChest        },
+        {BOT_SLOT_WAIST,            WarriorTankWaist        },
+        {BOT_SLOT_LEGS,             WarriorTankLegs         },
+        {BOT_SLOT_FEET,             WarriorTankFeet         },
+        {BOT_SLOT_WRIST,            WarriorTankWrist        },
 };
 
 const std::map<uint8, BotSpecEquipTemplate> AllBotSpecEquipTemplate = {
