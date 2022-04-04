@@ -9,6 +9,7 @@
 #include "Item.h"
 #include "Log.h"
 #include "Player.h"
+#include "botequiptemplate.h"
 
 const std::map<uint8, uint8> BotPlayerSlotMap = {
         {BOT_SLOT_MAINHAND   ,  EQUIPMENT_SLOT_MAINHAND},
@@ -31,69 +32,14 @@ const std::map<uint8, uint8> BotPlayerSlotMap = {
         {BOT_SLOT_NECK       ,  EQUIPMENT_SLOT_NECK},
 };
 
-
-typedef std::map<uint32, uint32> SlotLevelEquip;
-const SlotLevelEquip WarriorTankMainHand = {
-        {15, 6504},
-        {30, 8225},
-        {40, 7943},
-        {50, 2244},
-        {60, 23054},
-        {70, 30311},
-        {187, 37065},
-        {200, 37401},
-        {213, 40345},
-        {219, 45700},
-        {232, 45110},
-        {245, 45110},
-        {251, 51010},
-        {258, 47506},
-        {264, 51869},
-        {277, 50672},
-};
-const SlotLevelEquip WarriorTankOffHand = {
-        {15 ,    13245        },
-        {30 ,    4065         },
-        {40 ,    9918         },
-        {50 ,    10835        },
-        {60 ,    23043        },
-        {70 ,    30314        },
-        {187,    37107        },
-        {200,    39276        },
-        {213,    40266        },
-        {219,    45707        },
-        {226,    40400        },
-        {232,    45877        },
-        {245,    47260        },
-        {251,    50794        },
-        {258,    46964        },
-        {264,    50065        },
-        {277,    50729        },
-};
-
-const SlotLevelEquip WarriorRange = {
-        {15 ,      4576       },
-        {30 ,      11305      },
-        {40 ,      10624      },
-        {50 ,      13022      },
-        {60 ,      21478      },
-        {70 ,      34334      },
-        {187,      37050      },
-        {200,      37615      },
-        {213,      40265      },
-        {219,      46342      },
-        {232,      45327      },
-        {245,      48711      },
-        {251,      50776      },
-        {264,      51394      },
-        {277,      51927      },
-};
-
 typedef std::map<uint8, SlotLevelEquip> BotSpecEquipTemplate;
 const BotSpecEquipTemplate WarriorTankEquipTemplate = {
         {BOT_SLOT_MAINHAND,         WarriorTankMainHand     },
         {BOT_SLOT_RANGED,           WarriorRange            },
         {BOT_SLOT_OFFHAND,          WarriorTankOffHand      },
+        {BOT_SLOT_HEAD,             WarriorTankHead         },
+        {BOT_SLOT_SHOULDERS,        WarriorTankShoulder     },
+        {BOT_SLOT_CHEST,            WarriorTankChest        },
 };
 
 const std::map<uint8, BotSpecEquipTemplate> AllBotSpecEquipTemplate = {
