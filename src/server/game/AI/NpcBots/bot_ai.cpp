@@ -10363,8 +10363,8 @@ bool bot_ai::_unequip(uint8 slot, ObjectGuid::LowType receiver)
             }
             else
             {
-                Item* pItem = master->StoreItem(dest, item, true);
-                master->SendNewItem(pItem, 1, true, false, false);
+//                Item* pItem = master->StoreItem(dest, item, true);
+//                master->SendNewItem(pItem, 1, true, false, false);
             }
         }
         else
@@ -10446,19 +10446,19 @@ bool bot_ai::_equip(uint8 slot, Item* newItem, ObjectGuid::LowType receiver)
         ASSERT(receiver == master->GetGUID().GetCounter());
 
         //cheating
-        if (newItem->GetOwnerGUID() != master->GetGUID() || !master->HasItemCount(newItemId, 1))
-        {
+//        if (newItem->GetOwnerGUID() != master->GetGUID() || !master->HasItemCount(newItemId, 1))
+//        {
             //std::ostringstream msg;
             //msg << "Cannot find ";
             //_AddItemLink(master, newItem, msg, false);
             //msg << " (id: " << uint32(newItemId) << ")!";
             //BotWhisper(msg.str().c_str());
 
-            TC_LOG_ERROR("entities.player",
-                "minion_ai::_equip(): player %s (%s) is trying to make bot %s (id: %u) equip item: %s (id: %u, %s) but either does not have this item or does not own it",
-                master->GetName().c_str(), master->GetGUID().ToString().c_str(), me->GetName().c_str(), me->GetEntry(), proto->Name1.c_str(), proto->ItemId, newItem->GetGUID().ToString().c_str());
+//            TC_LOG_ERROR("entities.player",
+//                "minion_ai::_equip(): player %s (%s) is trying to make bot %s (id: %u) equip item: %s (id: %u, %s) but either does not have this item or does not own it",
+//                master->GetName().c_str(), master->GetGUID().ToString().c_str(), me->GetName().c_str(), me->GetEntry(), proto->Name1.c_str(), proto->ItemId, newItem->GetGUID().ToString().c_str());
 //            return false;
-        }
+//        }
 
         master->MoveItemFromInventory(newItem->GetBagSlot(), newItem->GetSlot(), true);
         //Item is removed from inventory table in _updateEquips(slot, newItem);
