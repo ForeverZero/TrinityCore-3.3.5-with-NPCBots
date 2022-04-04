@@ -52,9 +52,29 @@ const BotSpecEquipTemplate WarriorTankEquipTemplate = {
         {BOT_SLOT_TRINKET2,         TankTrinket2            },
         {BOT_SLOT_NECK    ,         StrTankNeck             },
 };
+const BotSpecEquipTemplate WarriorArmsEquipTemplate = {
+        {BOT_SLOT_MAINHAND,         WarriorDpsMainHand     },
+        {BOT_SLOT_RANGED,           WarriorRange           },
+//        {BOT_SLOT_OFFHAND,          WarriorTankOffHand      },
+        {BOT_SLOT_HEAD,             WarriorDpsHead         },
+//        {BOT_SLOT_SHOULDERS,        WarriorTankShoulder     },
+//        {BOT_SLOT_CHEST,            WarriorTankChest        },
+//        {BOT_SLOT_WAIST,            WarriorTankWaist        },
+//        {BOT_SLOT_LEGS,             WarriorTankLegs         },
+//        {BOT_SLOT_FEET,             WarriorTankFeet         },
+//        {BOT_SLOT_WRIST,            WarriorTankWrist        },
+//        {BOT_SLOT_HANDS,            WarriorTankHands        },
+//        {BOT_SLOT_BACK,             StrTankBack             },
+//        {BOT_SLOT_FINGER1 ,         StrTankFinger1          },
+//        {BOT_SLOT_FINGER2 ,         StrTankFinger2          },
+//        {BOT_SLOT_TRINKET1,         TankTrinket1            },
+//        {BOT_SLOT_TRINKET2,         TankTrinket2            },
+//        {BOT_SLOT_NECK    ,         StrTankNeck             },
+};
 
 const std::map<uint8, BotSpecEquipTemplate> AllBotSpecEquipTemplate = {
-        {BOT_SPEC_WARRIOR_PROTECTION, WarriorTankEquipTemplate}
+        {BOT_SPEC_WARRIOR_PROTECTION,       WarriorTankEquipTemplate        },
+        {BOT_SPEC_WARRIOR_ARMS,             WarriorArmsEquipTemplate        },
 };
 
 void BotEquipMgr::InitBotEquip(Creature* bot) {
