@@ -61,7 +61,7 @@ const BotSpecEquipTemplate WarriorArmsEquipTemplate = {
         {BOT_SLOT_CHEST,            WarriorDpsChest        },
         {BOT_SLOT_WAIST,            WarriorDpsWaist        },
         {BOT_SLOT_LEGS,             WarriorDpsLegs         },
-//        {BOT_SLOT_FEET,             WarriorTankFeet         },
+        {BOT_SLOT_FEET,             WarriorDpsFeet         },
 //        {BOT_SLOT_WRIST,            WarriorTankWrist        },
 //        {BOT_SLOT_HANDS,            WarriorTankHands        },
 //        {BOT_SLOT_BACK,             StrTankBack             },
