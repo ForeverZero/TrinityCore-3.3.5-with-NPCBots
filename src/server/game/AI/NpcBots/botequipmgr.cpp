@@ -67,14 +67,35 @@ const BotSpecEquipTemplate WarriorArmsEquipTemplate = {
         {BOT_SLOT_BACK,             StrDpsBack             },
         {BOT_SLOT_FINGER1 ,         StrDpsFinger1          },
         {BOT_SLOT_FINGER2 ,         StrDpsFinger2          },
-//        {BOT_SLOT_TRINKET1,         TankTrinket1            },
-//        {BOT_SLOT_TRINKET2,         TankTrinket2            },
-//        {BOT_SLOT_NECK    ,         StrTankNeck             },
+        {BOT_SLOT_TRINKET1,         StrDpsTrinket1         },
+        {BOT_SLOT_TRINKET2,         StrDpsTrinket2         },
+        {BOT_SLOT_NECK    ,         StrDpsNeck             },
+};
+
+const BotSpecEquipTemplate WarriorFuryEquipTemplate = {
+        {BOT_SLOT_MAINHAND,         WarriorDpsMainHand     },
+        {BOT_SLOT_RANGED,           WarriorRange           },
+        {BOT_SLOT_OFFHAND,          WarriorDpsMainHand      },
+        {BOT_SLOT_HEAD,             WarriorDpsHead         },
+        {BOT_SLOT_SHOULDERS,        WarriorDpsShoulder     },
+        {BOT_SLOT_CHEST,            WarriorDpsChest        },
+        {BOT_SLOT_WAIST,            WarriorDpsWaist        },
+        {BOT_SLOT_LEGS,             WarriorDpsLegs         },
+        {BOT_SLOT_FEET,             WarriorDpsFeet         },
+        {BOT_SLOT_WRIST,            WarriorDpsWrist        },
+        {BOT_SLOT_HANDS,            WarriorDpsHands        },
+        {BOT_SLOT_BACK,             StrDpsBack             },
+        {BOT_SLOT_FINGER1 ,         StrDpsFinger1          },
+        {BOT_SLOT_FINGER2 ,         StrDpsFinger2          },
+        {BOT_SLOT_TRINKET1,         StrDpsTrinket1         },
+        {BOT_SLOT_TRINKET2,         StrDpsTrinket2         },
+        {BOT_SLOT_NECK    ,         StrDpsNeck             },
 };
 
 const std::map<uint8, BotSpecEquipTemplate> AllBotSpecEquipTemplate = {
         {BOT_SPEC_WARRIOR_PROTECTION,       WarriorTankEquipTemplate        },
         {BOT_SPEC_WARRIOR_ARMS,             WarriorArmsEquipTemplate        },
+        {BOT_SPEC_WARRIOR_FURY,             WarriorFuryEquipTemplate        },
 };
 
 void BotEquipMgr::InitBotEquip(Creature* bot) {
