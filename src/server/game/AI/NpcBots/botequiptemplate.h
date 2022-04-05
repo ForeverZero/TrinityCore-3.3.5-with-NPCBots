@@ -330,7 +330,7 @@ const SlotLevelEquip TankTrinket2 = {
         {277,   54591},
 };
 
-const SlotLevelEquip WarriorDpsMainHand = {
+const SlotLevelEquip StrDpsMainHand = {
         {1  ,   2754   },
         {5  ,   8178   },
         {10 ,   28164  },
