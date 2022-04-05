@@ -53,7 +53,7 @@ const BotSpecEquipTemplate WarriorTankEquipTemplate = {
         {BOT_SLOT_NECK    ,         StrTankNeck             },
 };
 const BotSpecEquipTemplate WarriorArmsEquipTemplate = {
-        {BOT_SLOT_MAINHAND,         WarriorDpsMainHand     },
+        {BOT_SLOT_MAINHAND,         StrDpsMainHand         },
         {BOT_SLOT_RANGED,           WarriorRange           },
 //        {BOT_SLOT_OFFHAND,          NoNeedThis      },
         {BOT_SLOT_HEAD,             WarriorDpsHead         },
@@ -73,9 +73,9 @@ const BotSpecEquipTemplate WarriorArmsEquipTemplate = {
 };
 
 const BotSpecEquipTemplate WarriorFuryEquipTemplate = {
-        {BOT_SLOT_MAINHAND,         WarriorDpsMainHand     },
+        {BOT_SLOT_MAINHAND,         StrDpsMainHand         },
         {BOT_SLOT_RANGED,           WarriorRange           },
-        {BOT_SLOT_OFFHAND,          WarriorDpsMainHand      },
+        {BOT_SLOT_OFFHAND,          StrDpsMainHand         },
         {BOT_SLOT_HEAD,             WarriorDpsHead         },
         {BOT_SLOT_SHOULDERS,        WarriorDpsShoulder     },
         {BOT_SLOT_CHEST,            WarriorDpsChest        },
