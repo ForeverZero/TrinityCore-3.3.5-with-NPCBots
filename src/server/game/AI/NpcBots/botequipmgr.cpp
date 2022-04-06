@@ -97,7 +97,7 @@ const BotSpecEquipTemplate PaladinTankEquipTemplate = {
         {BOT_SLOT_RANGED,           PaladinTankRange        },
         {BOT_SLOT_OFFHAND,          WarriorTankOffHand      },
         {BOT_SLOT_HEAD,             PaladinTankHead         },
-//        {BOT_SLOT_SHOULDERS,        WarriorTankShoulder     },
+        {BOT_SLOT_SHOULDERS,        PaladinTankShoulder     },
 //        {BOT_SLOT_CHEST,            WarriorTankChest        },
 //        {BOT_SLOT_WAIST,            WarriorTankWaist        },
 //        {BOT_SLOT_LEGS,             WarriorTankLegs         },

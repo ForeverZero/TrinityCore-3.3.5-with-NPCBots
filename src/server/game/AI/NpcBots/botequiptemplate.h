@@ -671,4 +671,23 @@ const SlotLevelEquip PaladinTankHead = {
 };
 
 
+const SlotLevelEquip PaladinTankShoulder = {
+        {15 ,      10407     },
+        {30 ,      3841      },
+        {40 ,      8144      },
+        {50 ,      8319      },
+        {60 ,      22940     },
+        {70 ,      34192     },
+        {187,      37115     },
+        {200,      39642     },
+        {213,      40584     },
+        {219,      45385     },
+        {226,      46177     },
+        {232,      48636     },
+        {245,      48637     },
+        {258,      48646     },
+        {264,      51170     },
+        {277,      51269     },
+};
+
 #endif //TRINITYCORE_BOTEQUIPTEMPLATE_H
