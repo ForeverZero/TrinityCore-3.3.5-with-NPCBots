@@ -653,4 +653,22 @@ const SlotLevelEquip PaladinTankRange = {
         {264,    50461    },
 };
 
+const SlotLevelEquip PaladinTankHead = {
+        {30 ,      4077       },
+        {40 ,      10763      },
+        {50 ,      11746      },
+        {60 ,      22418      },
+        {70 ,      34357      },
+        {200,      39640      },
+        {213,      40581      },
+        {219,      45382      },
+        {226,      46175      },
+        {232,      48634      },
+        {245,      48639      },
+        {258,      48644      },
+        {264,      51173      },
+        {277,      51266      },
+};
+
+
 #endif //TRINITYCORE_BOTEQUIPTEMPLATE_H
