@@ -644,5 +644,13 @@ const SlotLevelEquip StrDpsNeck= {
         {284,  54581 },
 };
 
+const SlotLevelEquip PaladinTankRange = {
+        {60 ,    23203    },
+        {70 ,    32368    },
+        {200,    40707    },
+        {226,    45145    },
+        {245,    47664    },
+        {264,    50461    },
+};
 
 #endif //TRINITYCORE_BOTEQUIPTEMPLATE_H
