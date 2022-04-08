@@ -690,7 +690,7 @@ const SlotLevelEquip PaladinTankShoulder = {
         {277,      51269     },
 };
 
-const SlotLevelEquip PaldinTankChest = {
+const SlotLevelEquip PaladinTankChest = {
         {10 ,    2273      },
         {20 ,    6731      },
         {30 ,    14751     },
@@ -828,6 +828,16 @@ const SlotLevelEquip PaladinTankHands = {
         {258,    48643  },
         {264,    51172  },
         {277,    51267  },
+};
+
+const SlotLevelEquip PaladinRetributionRange = {
+        {60 ,    23203    },
+        {70 ,    33503    },
+        {200,    40706    },
+        {213,    40191    },
+        {226,    45510    },
+        {245,    47661    },
+        {264,    50455    },
 };
 
 #endif //TRINITYCORE_BOTEQUIPTEMPLATE_H
