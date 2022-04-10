@@ -840,4 +840,21 @@ const SlotLevelEquip PaladinRetributionRange = {
         {264,    50455    },
 };
 
+const SlotLevelEquip PaladinRetributionHead = {
+        {30 ,      4077       },
+        {40 ,      10763      },
+        {50 ,      11746      },
+        {60 ,      21387      },
+        {70 ,      30989      },
+        {200,      39635      },
+        {213,      40576      },
+        {219,      45377      },
+        {226,      46156      },
+        {232,      48604      },
+        {245,      48609      },
+        {258,      48614      },
+        {264,      51162      },
+        {277,      51277      },
+};
+
 #endif //TRINITYCORE_BOTEQUIPTEMPLATE_H
