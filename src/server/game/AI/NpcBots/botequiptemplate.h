@@ -857,4 +857,24 @@ const SlotLevelEquip PaladinRetributionHead = {
         {277,      51277      },
 };
 
+const SlotLevelEquip PaladinRetributionShoulder = {
+        {15 ,      10407     },
+        {30 ,      3841      },
+        {40 ,      8144      },
+        {50 ,      8319      },
+        {60 ,      23667     },
+        {70 ,      30997     },
+        {187,      39534     },
+        {200,      39637     },
+        {213,      40578     },
+        {219,      45380     },
+        {226,      46152     },
+        {232,      48606     },
+        {245,      48611     },
+        {251,      50324     },
+        {258,      48612     },
+        {264,      51160     },
+        {277,      51279     },
+};
+
 #endif //TRINITYCORE_BOTEQUIPTEMPLATE_H
