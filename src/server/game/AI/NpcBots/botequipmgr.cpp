@@ -121,17 +121,16 @@ const BotSpecEquipTemplate PaladinRetributionEquipTemplate = {
         {BOT_SLOT_CHEST,            PaladinRetributionChest      },
         {BOT_SLOT_WAIST,            PaladinRetributionWaist      },
         {BOT_SLOT_LEGS,             PaladinRetributionLegs       },
-//        {BOT_SLOT_FEET,             PaladinTankFeet         },
-//        {BOT_SLOT_WRIST,            PaladinTankWrist        },
-//        {BOT_SLOT_HANDS,            PaladinTankHands        },
-        {BOT_SLOT_BACK,             StrDpsBack             },
-        {BOT_SLOT_FINGER1 ,         StrDpsFinger1          },
-        {BOT_SLOT_FINGER2 ,         StrDpsFinger2          },
-        {BOT_SLOT_TRINKET1,         StrDpsTrinket1         },
-        {BOT_SLOT_TRINKET2,         StrDpsTrinket2         },
-        {BOT_SLOT_NECK    ,         StrDpsNeck             },
+        {BOT_SLOT_FEET,             PaladinRetributionFeet       },
+        {BOT_SLOT_WRIST,            PaladinRetritbutionWrist     },
+        {BOT_SLOT_HANDS,            PaladinRetritbutionHands     },
+        {BOT_SLOT_BACK,             StrDpsBack                   },
+        {BOT_SLOT_FINGER1 ,         StrDpsFinger1                },
+        {BOT_SLOT_FINGER2 ,         StrDpsFinger2                },
+        {BOT_SLOT_TRINKET1,         StrDpsTrinket1               },
+        {BOT_SLOT_TRINKET2,         StrDpsTrinket2               },
+        {BOT_SLOT_NECK    ,         StrDpsNeck                   },
 };
-
 
 const std::map<uint8, BotSpecEquipTemplate> AllBotSpecEquipTemplate = {
         {BOT_SPEC_WARRIOR_PROTECTION,       WarriorTankEquipTemplate        },
