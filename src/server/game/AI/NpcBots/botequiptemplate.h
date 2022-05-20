@@ -970,7 +970,7 @@ const SlotLevelEquip PaladinRetributionFeet = {
         {284,   54578   },
 };
 
-const SlotLevelEquip PaladinRetritbutionWrist = {
+const SlotLevelEquip PaladinRetributionWrist = {
         {1  ,  2384   },
         {5  ,  2396   },
         {10 ,  6550   },
@@ -997,7 +997,7 @@ const SlotLevelEquip PaladinRetritbutionWrist = {
         {277,  50659  },
 };
 
-const SlotLevelEquip PaladinRetritbutionHands = {
+const SlotLevelEquip PaladinRetributionHands = {
         {1  ,  6063   },
         {5  ,  2397   },
         {10 ,  2980   },
