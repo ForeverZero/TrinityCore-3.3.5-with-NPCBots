@@ -139,7 +139,7 @@ const BotSpecEquipTemplate PaladinHolyEquipTemplate = {
         {BOT_SLOT_HEAD,             PaladinHolyHead                   },
         {BOT_SLOT_SHOULDERS,        PaladinHolyShoulder               },
         {BOT_SLOT_CHEST,            PaladinHolyChest                  },
-//        {BOT_SLOT_WAIST,            PaladinRetributionWaist      },
+        {BOT_SLOT_WAIST,            PaladinHolyWaist                  },
 //        {BOT_SLOT_LEGS,             PaladinRetributionLegs       },
 //        {BOT_SLOT_FEET,             PaladinRetributionFeet       },
 //        {BOT_SLOT_WRIST,            PaladinRetributionWrist     },
